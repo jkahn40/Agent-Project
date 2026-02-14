@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linkedin-candidate-finder"
+version = "0.1.0"
+description = "An AI agent that reviews job descriptions and crawls LinkedIn to find potential candidates, integrated with Claude Cowork."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+dependencies = [
+    "anthropic>=0.42.0",
+    "httpx>=0.27.0",
+    "beautifulsoup4>=4.12.0",
+    "pydantic>=2.6.0",
+    "python-dotenv>=1.0.0",
+    "mcp>=1.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.3.0",
+]
+
+[project.scripts]
+candidate-finder = "src.cli:main"
+candidate-finder-mcp = "src.cowork_server:main"
+
+[tool.setuptools.packages.find]
+include = ["src*", "tools*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

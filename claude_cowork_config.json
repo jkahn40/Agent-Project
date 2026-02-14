@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "linkedin-candidate-finder": {
+      "command": "python",
+      "args": ["-m", "src.cowork_server"],
+      "cwd": ".",
+      "env": {
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "LINKEDIN_LI_AT": "${LINKEDIN_LI_AT}"
+      }
+    }
+  }
+}
